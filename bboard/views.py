@@ -12,6 +12,8 @@ def index(request):
 """
 
 def index(request):
-    bbs = Bb.objects.order_by('-published')
+    #bbs = Bb.objects.order_by('-published')
+    #I changed the previous string, cos we do not need sorting
+    bbs = Bb.objects_all()
     return render(request, 'bboard/index.html', {'bbs': bbs})
 
