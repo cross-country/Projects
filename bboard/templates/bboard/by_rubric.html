@@ -2,24 +2,22 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Main :: Bill Board</title>
+		<title>{{ current_rubric.name}} :: Bill Board</title>
 	</head>
 	<body>
 		<h1>Advertisments</h1>
+		<h2>Rubric: {{ current_rubric.name }}</h2>
 		<div>
-			<a href="/bboard/">Main</a>
+			<a href="/bboard/"> Main</a>
 			{% for rubric in rubrics %}
 			<a href="/bboard/{{ rubric.pk }}/">{{ rubric.name }}</a>
-			{{% endfor %}}
+			{% endfor %}
 		</div>
-
 		{% for bb in bbs %}
 		<div>
 			<h2>{{ bb.title }}</h2>
 			<p>{{ bb.content }}</p>
-			<p><a href="/bboard/{{ bb.rubric.pk }}/">
-			{{ bb.rubric.nme }}</a></p>
-			<p>{{ bb.published|date:"d.m.Y H:i:s" }}</p>
+			<p>{{ bb.published|date:"d.mY H:i:s" }}</p>
 		</div>
 		{% endfor %}
 	</body>
