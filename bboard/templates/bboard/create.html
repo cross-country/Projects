@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title> To add an advertisment :: Bill Board</title>
+	</head>
+	<body>
+		<h1>Add your advertisment</h1>
+		<div>
+			<a href="{% url 'index' %}">Main</a>
+			{% for rubric in rubrics %}
+			<a href="% url 'by_rubric' rubric.pk %}">
+				{{ rubric.name }}</a>
+			{% endfor %}
+		</div>
+		<form method="post">
+			{% csrf_token %}
+			{{ form.as_p }}
+			<input type="submit" value="Add">
+		</form>
+	</body>
+</html>

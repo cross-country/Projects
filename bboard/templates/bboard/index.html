@@ -7,18 +7,18 @@
 	<body>
 		<h1>Advertisments</h1>
 		<div>
-			<a href="/bboard/">Main</a>
+			<a href="{% url 'index' %}">Main</a>
 			{% for rubric in rubrics %}
-			<a href="/bboard/{{ rubric.pk }}/">{{ rubric.name }}</a>
-			{{% endfor %}}
+			<a href="{% url 'by_rubric' rubric.pk %}">{{ bb.rubric.name }}</a>
+			{% endfor %}
 		</div>
 
 		{% for bb in bbs %}
 		<div>
 			<h2>{{ bb.title }}</h2>
 			<p>{{ bb.content }}</p>
-			<p><a href="/bboard/{{ bb.rubric.pk }}/">
-			{{ bb.rubric.nme }}</a></p>
+			<p><a href="{% url 'by_rubric' bb.rubric.pk %}">
+			{{ bb.rubric.name }}</a></p>
 			<p>{{ bb.published|date:"d.m.Y H:i:s" }}</p>
 		</div>
 		{% endfor %}
